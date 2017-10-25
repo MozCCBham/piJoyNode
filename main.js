@@ -48,21 +48,21 @@ app.get("/left", function(req, res) {
         if (!initialised) {
                 initialise();
         }
-        wpi.digitalWrite(7, wpi.HIGH);
-        wpi.digitalWrite(8, wpi.LOW);
-        wpi.digitalWrite(9, wpi.LOW);
-        wpi.digitalWrite(10, wpi.HIGH);
 	console.log("left")
+        wpi.digitalWrite(7, wpi.LOW);
+        wpi.digitalWrite(8, wpi.HIGH);
+        wpi.digitalWrite(9, wpi.HIGH);
+        wpi.digitalWrite(10, wpi.LOW);
 })
 app.get("/right", function(req, res) {
         if (!initialised) {
                 initialise();
         }
+        wpi.digitalWrite(7, wpi.HIGH);
+        wpi.digitalWrite(8, wpi.LOW);
+        wpi.digitalWrite(9, wpi.LOW);
+        wpi.digitalWrite(10, wpi.HIGH);
 	console.log("right")
-        wpi.digitalWrite(7, wpi.LOW);
-        wpi.digitalWrite(8, wpi.HIGH);
-        wpi.digitalWrite(9, wpi.HIGH);
-        wpi.digitalWrite(10, wpi.LOW);
 })
 app.get("/stop", function(req, res) {
 	console.log("stop")
