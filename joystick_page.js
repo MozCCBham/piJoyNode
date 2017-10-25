@@ -1,4 +1,3 @@
-
 console.log("touchscreen is", VirtualJoystick.touchScreenAvailable() ? "available" : "not available");
 
 var joystick	= new VirtualJoystick({
@@ -18,12 +17,6 @@ var xhr = new XMLHttpRequest();
 
 setInterval(function(){
         var outputEl	= document.getElementById('result');
-	var str = ''
-                + (joystick.right()	? ' right'	: '')
-                + (joystick.up()	? ' up'		: '')
-                + (joystick.left()	? ' left'	: '')
-                + (joystick.down()	? ' down' 	: '')	
-	var outstr = ''
         outputEl.innerHTML	= '<b>Result:</b> '
                 + ' dx:'+joystick.deltaX()
                 + ' dy:'+joystick.deltaY()
@@ -31,23 +24,22 @@ setInterval(function(){
                 + (joystick.up()	? ' up'		: '')
                 + (joystick.left()	? ' left'	: '')
                 + (joystick.down()	? ' down' 	: '')	
-        if (str.indexOf("up") !== -1) {
-		outstr += 'forwards';
+	var address = ''
+        if (joystick.up()) {
+		address = 'forwards';
 	}
-        if (str.indexOf("down") !== -1) {
-		outstr += 'backwards';
+        else if (joystick.down()) {
+		address = 'backwards';
 	}
-        if (str.indexOf("right") !== -1) {
-		outstr += 'right';
+        else if (joystick.right()) {
+		address = 'right';
 	}
-        if (str.indexOf("left") !== -1) {
-		outstr += 'left';
+        else if (joystick.left()) {
+		address = 'left';
 	}
-	if (str === '') {
-		outstr = 'stop'
+        else {
+		address = 'stop'
 	}
-	xhr.open('GET', outstr, true);
+	xhr.open('GET', address, true);
 	xhr.send(null)
-console.log(outstr)
-	
 }, 1/30 * 1000);
